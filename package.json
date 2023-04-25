@@ -4,13 +4,18 @@
     "build": "turbo run build",
     "dev": "turbo run dev",
     "lint": "turbo run lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "test": "turbo run test",
+    "watch": "turbo run watch",
+    "generate:package": "cd tooling/generator && npx hygen package new"
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^5.16.5",
     "eslint": "^7.32.0",
     "eslint-config-custom": "*",
     "prettier": "^2.5.1",
-    "turbo": "latest"
+    "turbo": "latest",
+    "vitest": "^0.30.1"
   },
   "name": "garden",
   "packageManager": "yarn@1.22.19",
