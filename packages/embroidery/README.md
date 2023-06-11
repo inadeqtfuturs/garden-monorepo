@@ -9,7 +9,7 @@ Creating a typographical system in `stitches` requires at least two steps:
 1. Create some tokens in the theme object
 2. Apply those tokens to semantic html elements so that, for example, all `p` tags have the same styles
 
-`embroidery` simplifies this process and reduces boilerplate by generating typography form a set of primitive tokens including base font size, typographical scale, font families, and font weights. Given these primitives, the function exports token values to use in `createStitches` as well as typographical values for semantic html elements, which can be spread and exported in `globalCss`.
+`embroidery` simplifies this process and reduces boilerplate by generating typography from a set of primitive tokens including base font size, typographical scale, font families, and font weights. Given these primitives, the function exports token values to use in `createStitches` as well as typographical values for semantic html elements, which can be spread and exported in `globalCss`.
 
 ## api
 

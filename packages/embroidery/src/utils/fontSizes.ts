@@ -1,4 +1,4 @@
-import { Enumerate, FontSizeUnit } from '../types';
+import type { Enumerate, FontSizeUnit } from '../types';
 import { rem } from './rem';
 
 export const scales = {
@@ -39,8 +39,6 @@ export function getFontSizes<
     return scale as unknown as FontSizes<S, E>;
   }
 
-  console.log('@--> baseFontSize', baseFontSize);
-
   const baseSize = baseFontSize || 16;
   const s =
     scales[scale as keyof typeof scales] || scale || scales['majorThird'];
@@ -50,8 +48,6 @@ export function getFontSizes<
     i,
     rem(baseSize * Math.pow(s, i - 2))
   ]);
-
-  console.log('@--> entryArray', entryArray);
 
   return Object.fromEntries(entryArray);
 }
