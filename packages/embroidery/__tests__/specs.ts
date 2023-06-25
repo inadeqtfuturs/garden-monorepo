@@ -10,6 +10,25 @@ const defaultEmbroidery = {
     '7': '3.052rem',
     '8': '3.815rem',
     '9': '4.768rem'
+  },
+  typographyVariables: {
+    fontFamilies: {
+      body: 'serif',
+      heading: 'san-serif',
+      monospace: 'monospace'
+    },
+    fontWeights: {
+      bold: 700,
+      light: 300,
+      medium: 500,
+      regular: 400
+    },
+    letterSpacings: {
+      normal: 'normal'
+    },
+    lineHeights: {
+      normal: 'normal'
+    }
   }
 };
 
