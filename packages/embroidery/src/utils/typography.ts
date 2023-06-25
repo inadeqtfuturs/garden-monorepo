@@ -48,3 +48,13 @@ type ElementMap = (
 ) => StackPrimitive;
 
 type StackSettings = StackPrimitive & { map?: ElementMap };
+
+export function getTypography<F, V>({
+  fontSizes,
+  typographyVariables
+}: {
+  fontSizes: F;
+  typographyVariables: V;
+}): { fontSizes: F; typographyVariables: V } {
+  return { fontSizes, typographyVariables };
+}

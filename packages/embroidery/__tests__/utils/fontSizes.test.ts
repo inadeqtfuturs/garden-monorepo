@@ -30,4 +30,9 @@ describe('@--> fontSizes', () => {
     const result = getFontSizes({ scale: fontSizes });
     expect(result).toEqual(fontSizes);
   });
+
+  it('Returns based on different number of entries', () => {
+    const result = getFontSizes({ entries: 7 });
+    expect(Object.entries(result).length).toEqual(7);
+  });
 });
