@@ -1,68 +1,50 @@
+import type CSS from 'csstype';
 import type {
   FontFamilies,
   FontWeights,
   LineHeights,
-  LetterSpacings,
-  TypographyConfig,
-  TypographyVariables
+  LetterSpacings
 } from '../types';
 
-// https://developer.mozilla.org/en-US/docs/Web/CSS/font-family#values
-const defaultFontFamilies: FontFamilies = {
-  monospace: 'monospace',
-  body: 'serif',
-  heading: 'san-serif'
+type Elements = {
+  heading?: string[];
+  body?: string[];
+  monospace?: string[];
+} & Record<string, string[]>;
+
+export const defaultElements: Elements = {
+  heading: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'],
+  body: [
+    'p',
+    'a',
+    'span',
+    'small',
+    'ol',
+    'ul',
+    'li',
+    'blockquiote',
+    'table',
+    'tr',
+    'th',
+    'td'
+  ],
+  monospace: ['code', 'pre']
 };
 
-// https://developer.mozilla.org/en-US/docs/Web/CSS/font-weight#common_weight_name_mapping
-const defaultFontWeights: FontWeights = {
-  light: 300,
-  regular: 400,
-  medium: 500,
-  bold: 700
-};
+type StackPrimitive = {
+  fontFamily?: keyof FontFamilies;
+  fontWeight?: keyof FontWeights;
+  lineHeight?: keyof LineHeights;
+  letterSpacing?: keyof LetterSpacings;
+} & Omit<
+  CSS.Properties,
+  'fontFamily' | 'fontWeight' | 'lineHeight' | 'letterSpacing'
+>;
 
-// https://developer.mozilla.org/en-US/docs/Web/CSS/letter-spacing#PropertyValues
-const defaultLetterSpacings: LetterSpacings = {
-  normal: 'normal'
-};
+type ElementMap = (
+  variables: ThemeVariables & FontSizes,
+  element: string,
+  index: number
+) => StackPrimitive;
 
-//https://developer.mozilla.org/en-US/docs/Web/CSS/line-height#PropertyValues
-const defaultLineHeights: LineHeights = {
-  normal: 'normal'
-};
-
-const defaultTypographyVariables = {
-  fontFamilies: defaultFontFamilies,
-  fontWeights: defaultFontWeights,
-  letterSpacings: defaultLetterSpacings,
-  lineHeights: defaultLineHeights
-};
-
-export function getTypographyVariables<T extends TypographyConfig>(
-  typographyConfig?: T
-) {
-  const typographyEntries = Object.entries(typographyConfig || {});
-
-  const typography = typographyEntries.reduce((a, [k, c]) => {
-    // concat fontfamilies so we always return a value
-    if (k === 'fontFamilies' && c) {
-      const fontFamilyEntries = Object.entries(c);
-      const concatFontFamilies = fontFamilyEntries.reduce(
-        (acc, [family, font]) => {
-          const familyValue = acc[family as keyof FontFamilies];
-          if (!!font && familyValue) {
-            const concatFont = font.concat(', ', familyValue);
-            return { ...acc, [family]: concatFont };
-          }
-          return { ...acc, [family]: font };
-        },
-        defaultFontFamilies
-      );
-      return { ...a, fontFamilies: concatFontFamilies };
-    }
-    return { ...a, [k]: { ...a[k], ...c } };
-  }, defaultTypographyVariables);
-
-  return typography as TypographyVariables<T>;
-}
+type StackSettings = StackPrimitive & { map?: ElementMap };

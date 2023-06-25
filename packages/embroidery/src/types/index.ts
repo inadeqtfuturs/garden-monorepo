@@ -47,14 +47,14 @@ export type LetterSpacings = {
   normal?: Property.LetterSpacing;
 };
 
-export type TypographyConfig = {
+export type TypographyVariableConfig = {
   fontFamilies?: FontFamilies & { [key: string]: FontFamily | FontFamily[] };
   fontWeights?: FontWeights & { [key: string]: Property.FontWeight };
   letterSpacings?: LetterSpacings & { [key: string]: Property.LetterSpacing };
   lineHeights?: LineHeights & { [key: string]: Property.LineHeight };
 };
 
-export type TypographyVariables<T extends TypographyConfig> = {
+export type TypographyVariables<T extends TypographyVariableConfig> = {
   fontFamilies: Merge<FontFamilies, T['fontFamilies']>;
   fontWeights: Merge<FontWeights, T['fontWeights']>;
   letterSpacings: Merge<LetterSpacings, T['letterSpacings']>;

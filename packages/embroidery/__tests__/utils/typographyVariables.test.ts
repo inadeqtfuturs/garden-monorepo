@@ -1,4 +1,4 @@
-import { getTypographyVariables } from '../../src/utils/typography';
+import { getTypographyVariables } from '../../src/utils/typographyVariables';
 
 const defaultValues = {
   fontFamilies: { monospace: 'monospace', body: 'serif', heading: 'san-serif' },

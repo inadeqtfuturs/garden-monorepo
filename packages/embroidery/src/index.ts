@@ -1,6 +1,6 @@
 import type { Scale } from './utils/fontSizes';
 import { getFontSizes } from './utils/fontSizes';
-import { getTypographyVariables } from './utils/typography';
+import { getTypographyVariables } from './utils/typographyVariables';
 
 type Config<S, E> = {
   baseFontSize?: number;
