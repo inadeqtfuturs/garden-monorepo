@@ -10,6 +10,7 @@ module.exports = {
   ],
   rules: {
     '@next/next/no-html-link-for-pages': 'off',
+    '@typescript-eslint/consistent-type-imports': 'error',
     'prettier/prettier': [
       'error',
       {
